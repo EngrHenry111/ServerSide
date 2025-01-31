@@ -6,8 +6,7 @@ exports.createProduct = async(req , res)=>{
     try {
      const getUserId = await  userModel.findById(req.params.userId)
         const { productImage,  productTitle ,  productDetails, price } = req.body;
-         //const getUserId = await userModel.findById(req.params.userId)
-
+         
         const upload = await cloudinary.uploader.upload(req.file.path);
 
         const Product = await productModel.create({
