@@ -1,17 +1,16 @@
 const userModel = require("../Model/userModel");
-const productModel = ('../Model/productMedel.js');
-const cloudinary = ('../config/clourdinary.js');
-
+const productModel = require('../Model/productMedel.js');
+const cloudinary = require('../config/cloudinary');
 exports.createProduct = async(req , res)=>{
     try {
      const getUserId = await  userModel.findById(req.params.userId)
-        const { productImage,  productTitle ,  productDetails, price } = req.body;
+        const { productImage,   productTitle ,  productDetails, price } = req.body;
          
         const upload = await cloudinary.uploader.upload(req.file.path);
 
         const Product = await productModel.create({
             productImage: upload.secure_url, 
-            productTitle ,
+            productTitle,
             productDetails,  
             price
            
@@ -95,3 +94,46 @@ exports.createProduct = async(req , res)=>{
         }
     };
 
+
+
+    //upload-product
+// exports.createProducts = async (req, res) => {
+//   try {
+//     const getUserId = await userModel.findById(req.params.userId);
+//     const { productImage, productTitle, productDetails, price, status } =
+//       req.body;
+ 
+//     const upload = await cloudinary.uploader.upload(req.file.path);
+ 
+//     const product = await productModel.create({
+//       productImage: upload.secure_url,
+//       productTitle,
+//       productDetails,
+//       price,
+//     });
+ 
+//     getUserId.products.push(product._id);
+//     getUserId.save();
+ 
+//     return res.status(201).json({
+//       message: 'order added to your list',
+//       data: product,
+//     });
+//   } catch (error) {
+//     console.log('unable to place your order', error);
+//   }
+// };
+//   products: [     {       type: mongoose.Sc... by Ogbu Esther Uzoma (Unverified)
+// Ogbu Esther Uzoma (Unverified)
+// 19:16
+//   products: [
+//     {
+//       type: mongoose.Schema.Types.ObjectId,
+//       ref: "products",
+//     },
+//   ],
+// getUserId.products.push(product?._id);   
+
+// getUserId.products.push(product?._id);
+//     getUserId.save();
+// has context menu
