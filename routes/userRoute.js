@@ -6,7 +6,7 @@ const userRoutes = express.Router();
 
 
 userRoutes.post('/new-users', userController.createUser);
-//userRoutes.get('/login',userController.UserLogin);
+
 userRoutes.get('/get-all-users', userController.getAllUsers);
 userRoutes.get('/get-one-user/:id', userController.getOneById);
 userRoutes.patch('/update-user/:id', userController.updateUser);
